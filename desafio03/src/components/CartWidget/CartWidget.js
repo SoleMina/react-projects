@@ -6,8 +6,9 @@ import "./CartWidget.css";
 
 const CartWidget = (props) => {
   return (
-    <div>
+    <div className="cartwidget">
       <FontAwesomeIcon icon={props.icon} data-count="0" />
+      <span>0</span>
     </div>
   );
 };
