@@ -1,4 +1,6 @@
 import React from "react";
+
+//Import icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./CartWidget.css";
 
