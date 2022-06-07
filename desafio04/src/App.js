@@ -1,5 +1,4 @@
 import { NavBar } from "./components/NavBar";
-import { Cuerpo } from "./components/Cuerpo";
 import { ItemListContainer } from "./components/ItemListContainer";
 
 //bootstrap

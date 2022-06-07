@@ -24,7 +24,8 @@ const NavBar = () => {
                 <CartWidget icon={faShoppingCart} />
               </Nav.Link>
               <Nav.Link href="#deets">Productos</Nav.Link>
-              <NavDropdown title="Categorías" id="collasible-nav-dropdown">
+              {/*
+                <NavDropdown title="Categorías" id="collasible-nav-dropdown">
                 <NavDropdown.Item
                   href="#action/3.1"
                   className={styles.dropdown}
@@ -32,6 +33,7 @@ const NavBar = () => {
                   Action
                 </NavDropdown.Item>
               </NavDropdown>
+               */}
             </Nav>
           </Navbar.Collapse>
         </Container>
