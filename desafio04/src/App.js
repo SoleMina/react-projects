@@ -3,7 +3,6 @@ import { ItemListContainer } from "./components/ItemListContainer";
 
 //bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import ItemCount from "./components/ItemCount/ItemCount";
 
 function App() {
   return (
