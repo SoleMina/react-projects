@@ -9,10 +9,9 @@ const ItemListContainer = ({ greeting }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getFetch() //llamada a la api
-      .then((resp) => setProductos(resp))
-      .catch((err) => console.log.log(err))
-      .finally(() => console.log("La llamada del producto se ha completado"));
+    fetch("assets/json/data.json")
+      .then((res) => res.json())
+      .then((res) => setProductos(res));
   }, []);
 
   console.log(productos);
