@@ -11,7 +11,7 @@ const ItemListContainer = ({ greeting }) => {
   useEffect(() => {
     fetch("assets/json/data.json")
       .then((res) => res.json())
-      .then((res) => setProductos(res));
+      .then((res) => console.log(res));
   }, []);
 
   console.log(productos);
