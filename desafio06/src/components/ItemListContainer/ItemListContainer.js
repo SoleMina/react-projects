@@ -9,9 +9,11 @@ const ItemListContainer = ({ greeting }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("assets/json/data.json")
+    fetch(
+      "https://raw.githubusercontent.com/SoleMina/react-projects/main/desafio06/assets/json/data.json"
+    )
       .then((res) => res.json())
-      .then((res) => console.log(res));
+      .then((res) => setProductos(res.productos));
   }, []);
 
   console.log(productos);
