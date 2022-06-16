@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ItemCount from "../ItemCount/ItemCount";
-import ItemList from "../ItemList/ItemList";
+import ItemDetail from "../ItemDetail/ItemDetail";
 import styles from "./ItemDetailContainer.module.scss";
 
 const ItemDetailContainer = () => {
@@ -26,9 +25,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div className={styles.listContainer}>
-      <h2>Item Detail</h2>
-      <ItemList item={item} />
-      <ItemCount />
+      <ItemDetail />
     </div>
   );
 };
