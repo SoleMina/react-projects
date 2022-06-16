@@ -25,7 +25,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div className={styles.listContainer}>
-      <ItemDetail />
+      <ItemDetail item={item} />
     </div>
   );
 };
