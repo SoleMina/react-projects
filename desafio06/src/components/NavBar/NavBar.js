@@ -11,7 +11,7 @@ const NavBar = () => {
     <div className={styles.navbar__container}>
       <Navbar collapseOnSelect expand="lg">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand>
             <NavLink to="/" className={styles.nav_linked}>
               Karianca Ecommerce
             </NavLink>
@@ -49,6 +49,16 @@ const NavBar = () => {
                 }
               >
                 Laptop
+              </NavLink>
+              <NavLink
+                to="/categories/mobile"
+                className={({ isActive }) =>
+                  isActive
+                    ? styles.nav_linked + " ligthblue"
+                    : styles.nav_linked + " white"
+                }
+              >
+                Mobile
               </NavLink>
               {/*
                 <NavDropdown title="Categorías" id="collasible-nav-dropdown">
