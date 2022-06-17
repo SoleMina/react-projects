@@ -11,22 +11,14 @@ const ItemListContainer = ({ greeting }) => {
   console.log(categoriaId);
 
   useEffect(() => {
-    fetch(
-      "https://raw.githubusercontent.com/SoleMina/react-projects/proyecto/desafio06/assets/json/data.json"
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        categoriaId
-          ? setProductos(
-              res.productos.filter(
-                (producto) => producto.category === categoriaId
-              )
-            )
-          : setProductos(res.productos);
-      });
-  }, []);
-
-  console.log(productos);
+    getFetch().then((res) => {
+      categoriaId
+        ? setProductos(
+            res.filter((producto) => producto.category === categoriaId)
+          )
+        : setProductos(res);
+    });
+  }, [categoriaId]);
   return (
     <>
       <h2 className="text-center p-4">{greeting}</h2>

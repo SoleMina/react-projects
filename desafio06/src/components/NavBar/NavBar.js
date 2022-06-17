@@ -12,15 +12,7 @@ const NavBar = () => {
       <Navbar collapseOnSelect expand="lg">
         <Container>
           <Navbar.Brand href="#home">
-            <NavLink
-              to="/"
-              className="nav-link"
-              className={({ isActive }) =>
-                isActive
-                  ? styles.nav_linked + " ligthblue"
-                  : styles.nav_linked + " white"
-              }
-            >
+            <NavLink to="/" className="nav-link">
               Karianca Ecommerce
             </NavLink>
           </Navbar.Brand>
