@@ -7,6 +7,7 @@ const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
 
   const { id } = useParams();
+  console.log(id);
 
   const getFetch = async () => {
     try {
@@ -14,12 +15,9 @@ const ItemDetailContainer = () => {
         "https://raw.githubusercontent.com/SoleMina/react-projects/main/desafio06/assets/json/data.json"
       );
       const queryFetchParse = await queryFetch.json();
-      const producto = queryFetchParse.productos.find(
-        (producto) => producto.id === id
-      );
-      console.log(producto);
+      let producto = queryFetchParse.productos;
+      producto = producto.find((prod) => parseInt(prod.id) === parseInt(id));
       setItem(producto);
-      console.log(item);
     } catch (err) {
       console.log(err);
     }
