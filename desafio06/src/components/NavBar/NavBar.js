@@ -12,7 +12,7 @@ const NavBar = () => {
       <Navbar collapseOnSelect expand="lg">
         <Container>
           <Navbar.Brand href="#home">
-            <NavLink to="/" className="nav-link">
+            <NavLink to="/" className={styles.nav_linked}>
               Karianca Ecommerce
             </NavLink>
           </Navbar.Brand>
