@@ -27,8 +27,8 @@ function App() {
           }
         />
         <Route path="/detail" element={<ItemDetailContainer />} />
-        <Route path="*" element={<Navigate to="/" />} />
         {/*  <Route path="/error" element={<Error404 /> } /> */}
+        {/*<Route path="*" element={<Navigate to="/" />} /> */}
       </Routes>
     </Router>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { CartWidget } from "../CartWidget";
+import { Link, NavLink } from "react-router-dom";
 //Import icon
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import styles from "./NavBar.module.scss";
@@ -10,7 +11,19 @@ const NavBar = () => {
     <div className={styles.navbar__container}>
       <Navbar collapseOnSelect expand="lg">
         <Container>
-          <Navbar.Brand href="#home">Karianca Ecommerce</Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <NavLink
+              to="/"
+              className="nav-link"
+              className={({ isActive }) =>
+                isActive
+                  ? styles.nav_linked + " ligthblue"
+                  : styles.nav_linked + " white"
+              }
+            >
+              Karianca Ecommerce
+            </NavLink>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -20,10 +33,31 @@ const NavBar = () => {
             </Nav>
 
             <Nav>
-              <Nav.Link href="#" to="#">
-                <CartWidget icon={faShoppingCart} />
+              <Nav.Link>
+                <Link to="/cart">
+                  <CartWidget icon={faShoppingCart} />
+                </Link>
               </Nav.Link>
-              <Nav.Link href="#deets">Productos</Nav.Link>
+              <NavLink
+                to="/productos"
+                className={({ isActive }) =>
+                  isActive
+                    ? styles.nav_linked + " ligthblue"
+                    : styles.nav_linked + " white"
+                }
+              >
+                Productos
+              </NavLink>
+              <NavLink
+                to="/categories"
+                className={({ isActive }) =>
+                  isActive
+                    ? styles.nav_linked + " ligthblue"
+                    : styles.nav_linked + " white"
+                }
+              >
+                Categories
+              </NavLink>
               {/*
                 <NavDropdown title="Categorías" id="collasible-nav-dropdown">
                 <NavDropdown.Item

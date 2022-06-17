@@ -3,9 +3,16 @@
   transition: all 0.7s;
   width: 100%;
   a {
-    color: white !important;
+    color: white;
   }
 }
 .dropdown {
-  background-color: #3055c3 !important;
+  background-color: #3055c3;
+}
+.nav_linked {
+  margin-right: 7px;
+  text-decoration: none !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
 }
