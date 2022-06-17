@@ -22,7 +22,10 @@ function App() {
           index
           element={<ItemListContainer greeting="Bienvenidos a mi página" />}
         />
-        <Route path="/categoria/:categoriaId" element={<ItemListContainer />} />
+        <Route
+          path="/categories/:categoriaId"
+          element={<ItemListContainer />}
+        />
         <Route path="/details/:id" index element={<ItemDetailContainer />} />
         {/*  <Route path="/error" element={<Error404 /> } /> */}
         {/*<Route path="*" element={<Navigate to="/" />} /> */}

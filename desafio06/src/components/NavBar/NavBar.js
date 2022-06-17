@@ -39,24 +39,24 @@ const NavBar = () => {
                 </Link>
               </Nav.Link>
               <NavLink
-                to="/productos"
+                to="/categories/electro"
                 className={({ isActive }) =>
                   isActive
                     ? styles.nav_linked + " ligthblue"
                     : styles.nav_linked + " white"
                 }
               >
-                Productos
+                Electro
               </NavLink>
               <NavLink
-                to="/categories"
+                to="/categories/laptop"
                 className={({ isActive }) =>
                   isActive
                     ? styles.nav_linked + " ligthblue"
                     : styles.nav_linked + " white"
                 }
               >
-                Categories
+                Laptop
               </NavLink>
               {/*
                 <NavDropdown title="Categorías" id="collasible-nav-dropdown">

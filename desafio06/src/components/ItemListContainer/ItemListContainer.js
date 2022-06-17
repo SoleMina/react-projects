@@ -8,13 +8,22 @@ const ItemListContainer = ({ greeting }) => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const { categoriaId } = useParams();
+  console.log(categoriaId);
 
   useEffect(() => {
     fetch(
-      "https://raw.githubusercontent.com/SoleMina/react-projects/main/desafio06/assets/json/data.json"
+      "https://raw.githubusercontent.com/SoleMina/react-projects/proyecto/desafio06/assets/json/data.json"
     )
       .then((res) => res.json())
-      .then((res) => setProductos(res.productos));
+      .then((res) => {
+        categoriaId
+          ? setProductos(
+              res.productos.filter(
+                (producto) => producto.category === categoriaId
+              )
+            )
+          : setProductos(res.productos);
+      });
   }, []);
 
   console.log(productos);
