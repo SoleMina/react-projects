@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ItemCount from "../ItemCount/ItemCount";
+import { useParams } from "react-router-dom";
 import { getFetch } from "../../helpers/getFetch";
 import styles from "./ItemListContainer.module.scss";
 import ItemList from "../ItemList/ItemList";
@@ -7,6 +7,7 @@ import ItemList from "../ItemList/ItemList";
 const ItemListContainer = ({ greeting }) => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { categoriaId } = useParams();
 
   useEffect(() => {
     fetch(

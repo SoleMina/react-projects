@@ -7,7 +7,6 @@ const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
 
   const { id } = useParams();
-  console.log(id);
 
   const getFetch = async () => {
     try {

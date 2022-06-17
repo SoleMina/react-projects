@@ -5,7 +5,7 @@
       "title": "Laptop",
       "price": 3500,
       "stock": 5,
-      "category": "electro",
+      "category": "laptop",
       "description": "High quality",
       "pictureUrl": "https://d598hd2wips7r.cloudfront.net/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/3/1/310H7LA-1_T1613774549.png"
     },
@@ -23,7 +23,7 @@
       "title": "Cellphone",
       "price": 1300,
       "stock": 20,
-      "category": "electro",
+      "category": "mobile",
       "description": "High quality",
       "pictureUrl": "https://www.edgars.co.za/media/catalog/product/cache/6f59c662b2daff2e8949d8b966c6178b/y/0/y01_-_black.jpg"
     }
