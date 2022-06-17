@@ -19,14 +19,9 @@ function App() {
         <Route
           path="/"
           index
-          element={
-            <>
-              <ItemListContainer greeting="Bienvenidos a mi página" />
-              <ItemDetailContainer />
-            </>
-          }
+          element={<ItemListContainer greeting="Bienvenidos a mi página" />}
         />
-        <Route path="/detail" element={<ItemDetailContainer />} />
+        <Route path="/details/:id" index element={<ItemDetailContainer />} />
         {/*  <Route path="/error" element={<Error404 /> } /> */}
         {/*<Route path="*" element={<Navigate to="/" />} /> */}
       </Routes>

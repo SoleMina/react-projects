@@ -25,7 +25,6 @@ const ItemListContainer = ({ greeting }) => {
           return (
             <div key={item.id}>
               <ItemList item={item} />
-              <ItemCount stock={10} initial={1} />
             </div>
           );
         })}
