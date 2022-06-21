@@ -35,6 +35,6 @@ export const getFetch = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(arrayApi);
-    }, 2000);
+    }, 1500);
   });
 };

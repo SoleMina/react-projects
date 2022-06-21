@@ -17,7 +17,6 @@ const Item = ({ item }) => {
           </button>
         </Link>
       </div>
-      <ItemCount stock={item.stock} initial={1} />
     </>
   );
 };
