@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 import styles from "./ItemDetail.module.scss";
 
@@ -9,14 +10,6 @@ const ItemDetail = ({ item }) => {
     setShowCount(false);
   };
 
-  const buttonPurchase = () => {
-    return (
-      <>
-        <button>Ir al cart o terminar compra</button>
-        <button>Seguir comprando</button>
-      </>
-    );
-  };
   return (
     <>
       <h2 className={showCount ? "" : "text-center"}>Item Detail</h2>
@@ -42,8 +35,12 @@ const ItemDetail = ({ item }) => {
         </>
       ) : (
         <div className={styles.btn__container}>
-          <button>Ir al cart o terminar compra</button>
-          <button>Seguir comprando</button>
+          <Link to="/cart">
+            <button>Ir al cart o terminar compra</button>
+          </Link>
+          <Link to="/">
+            <button>Seguir comprando</button>
+          </Link>
         </div>
       )}
     </>
