@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getFetch } from "../../helpers/getFetch";
 import styles from "./ItemListContainer.module.scss";
 import ItemList from "../ItemList/ItemList";
+import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 
 const ItemListContainer = ({ greeting }) => {
   const [productos, setProductos] = useState([]);
@@ -18,20 +19,27 @@ const ItemListContainer = ({ greeting }) => {
           )
         : setProductos(res);
     });
+    setLoading(false);
   }, [categoriaId]);
   return (
-    <>
-      <h2 className="text-center p-4">{greeting}</h2>
-      <div className={styles.listContainer}>
-        {productos.map((item) => {
-          return (
-            <div key={item.id}>
-              <ItemList item={item} />
-            </div>
-          );
-        })}
-      </div>
-    </>
+    <div>
+      {loading ? (
+        <SpinnerContainer text="Loading..." />
+      ) : (
+        <>
+          <h2 className="text-center p-4">{greeting}</h2>
+          <div className={styles.listContainer}>
+            {productos.map((item) => {
+              return (
+                <div key={item.id}>
+                  <ItemList item={item} />
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 

@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../contexts/cartContext";
 import ItemCount from "../ItemCount/ItemCount";
 import styles from "./ItemDetail.module.scss";
 
 const ItemDetail = ({ item }) => {
   const [showCount, setShowCount] = useState(true);
+  const { cart, addToCart } = useCartContext();
 
   const onHandlerPurchase = () => {
     setShowCount(false);
   };
+
+  const onAdd = (cant) => {
+    addToCart({ ...item, quantity: cant });
+  };
+  console.log(cart);
 
   return (
     <>
@@ -23,26 +30,6 @@ const ItemDetail = ({ item }) => {
       />
       <p>Description: {item.description}</p>
       <p>Stock: {item.stock}</p>
-      {showCount ? (
-        <>
-          <ItemCount stock={10} initial={1} />
-          <button
-            className={styles.count__addButton}
-            onClick={() => onHandlerPurchase()}
-          >
-            Agregar a carrito
-          </button>
-        </>
-      ) : (
-        <div className={styles.btn__container}>
-          <Link to="/cart">
-            <button>Ir al cart o terminar compra</button>
-          </Link>
-          <Link to="/">
-            <button>Seguir comprando</button>
-          </Link>
-        </div>
-      )}
     </>
   );
 };

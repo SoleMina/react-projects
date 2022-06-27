@@ -25,7 +25,7 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     setTimeout(() => {
       getFetch();
-    }, 1500);
+    }, 1000);
   }, []);
 
   return (
