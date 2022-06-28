@@ -24,7 +24,7 @@ export const CartContextProvider = ({ children }) => {
       });
       setCart(newCart);
     } else {
-      setCart([...cart, item]);
+      setCart((prev) => [...prev, { ...item, cantidad }]);
     }
   };
 

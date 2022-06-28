@@ -9,7 +9,7 @@ const ItemDetail = ({ item }) => {
   const { cart, addToCart } = useCartContext();
 
   const onAdd = (cant) => {
-    addToCart({ ...item, cantidad: cant });
+    addToCart(item, cant);
   };
   console.log(cart);
 
