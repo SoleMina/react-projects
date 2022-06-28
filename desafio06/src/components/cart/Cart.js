@@ -1,5 +1,6 @@
 import React from "react";
 import { useCartContext } from "../../contexts/cartContext";
+import styles from "./Cart.module.scss";
 
 const Cart = () => {
   const { cart, removeCart } = useCartContext();
@@ -10,8 +11,9 @@ const Cart = () => {
         {cart.map((item) => (
           <div key={item.id}>
             <img src={item.pictureUrl} width="100" />
-            <p>Nombre: {item.title}</p>
+            <h5>Nombre: {item.title}</h5>
             <p>Precio: {item.price}</p>
+            <p>Cantidad: {item.cantidad}</p>
           </div>
         ))}
       </ul>

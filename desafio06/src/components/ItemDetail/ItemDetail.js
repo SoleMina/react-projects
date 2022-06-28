@@ -8,12 +8,8 @@ const ItemDetail = ({ item }) => {
   const [showCount, setShowCount] = useState(true);
   const { cart, addToCart } = useCartContext();
 
-  const onHandlerPurchase = () => {
-    setShowCount(false);
-  };
-
   const onAdd = (cant) => {
-    addToCart({ ...item, quantity: cant });
+    addToCart({ ...item, cantidad: cant });
   };
   console.log(cart);
 
@@ -30,6 +26,7 @@ const ItemDetail = ({ item }) => {
       />
       <p>Description: {item.description}</p>
       <p>Stock: {item.stock}</p>
+      <ItemCount stock={10} initial={1} onAdd={onAdd} />
     </>
   );
 };

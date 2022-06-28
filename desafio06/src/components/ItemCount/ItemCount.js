@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./ItemCount.module.scss";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stock, initial, onAdd, item }) => {
   const [showCount, setShowCount] = useState(true);
   const [count, setCount] = useState(initial);
 
@@ -13,31 +13,33 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     count > 0 && setCount(count - 1);
   };
   const agregar = () => {
-    onAdd(count);
-    setShowCount(false);
+    if (count) {
+      onAdd(count);
+      setShowCount(false);
+    }
   };
 
   return (
     <div>
-      <div className={styles.count}>
+      <div className={styles.count + " w-50 mb-2"}>
         <button onClick={() => handleDecrement()}>-</button>
         <p>{count}</p>
         <button onClick={() => onAddition()}>+</button>
       </div>
       {showCount ? (
         <>
-          <ItemCount stock={10} initial={1} onAdd={onAdd} />
-          <button className={styles.count__addButton} onClick={() => agregar()}>
-            Agregar a carrito
+          <button className="w-50" onClick={() => agregar(count)}>
+            Agregar al carrito
           </button>
         </>
       ) : (
         <div className={styles.btn__container}>
           <Link to="/cart">
-            <button>Ir al cart o terminar compra</button>
+            <button className="w-50 mb-2">Terminar compra</button>
           </Link>
+          <br />
           <Link to="/">
-            <button>Seguir comprando</button>
+            <button className="w-50">Seguir comprando</button>
           </Link>
         </div>
       )}
