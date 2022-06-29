@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import styles from "./ItemDetailContainer.module.scss";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
 
@@ -23,14 +25,19 @@ const ItemDetailContainer = () => {
   };
 
   useEffect(() => {
+    getFetch();
     setTimeout(() => {
-      getFetch();
-    }, 1000);
+      setLoading(false);
+    }, 500);
   }, []);
 
   return (
     <div className={styles.listContainer}>
-      <ItemDetail item={item} />
+      {loading ? (
+        <SpinnerContainer text="Loading..." />
+      ) : (
+        <ItemDetail item={item} />
+      )}
     </div>
   );
 };

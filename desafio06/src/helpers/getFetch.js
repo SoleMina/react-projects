@@ -33,8 +33,11 @@ const arrayApi = [
 
 export const getFetch = () => {
   return new Promise((resolve, reject) => {
+    /*
     setTimeout(() => {
       resolve(arrayApi);
     }, 1000);
+    */
+    resolve(arrayApi);
   });
 };
