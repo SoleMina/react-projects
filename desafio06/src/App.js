@@ -13,6 +13,7 @@ import { CartContextProvider } from "./contexts/cartContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/cart/Cart";
+import { TextComponent } from "./helpers/getFetch";
 
 function App() {
   return (

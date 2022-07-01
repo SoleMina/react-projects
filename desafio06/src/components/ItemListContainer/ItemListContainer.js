@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import { useParams } from "react-router-dom";
 import { getFetch } from "../../helpers/getFetch";
 import styles from "./ItemListContainer.module.scss";
 import ItemList from "../ItemList/ItemList";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = memo(({ greeting }) => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const { categoriaId } = useParams();
@@ -41,6 +41,6 @@ const ItemListContainer = ({ greeting }) => {
       )}
     </div>
   );
-};
+});
 
 export default ItemListContainer;

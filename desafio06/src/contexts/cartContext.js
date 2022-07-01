@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { createContext } from "react";
 
 export const CartContext = createContext([]);
@@ -31,6 +32,7 @@ export const CartContextProvider = ({ children }) => {
   const removeCart = () => {
     setCart([]);
   };
+
   return (
     <CartContext.Provider value={{ cart, addToCart, removeCart, count }}>
       {children}

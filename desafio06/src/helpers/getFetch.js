@@ -1,3 +1,6 @@
+import React from "react";
+import { Navigate } from "react-router-dom";
+
 const arrayApi = [
   {
     id: 1,
@@ -40,4 +43,17 @@ export const getFetch = () => {
     */
     resolve(arrayApi);
   });
+};
+
+export const TextComponent = ({ condition = false, children }) => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return <h2>NOOOO</h2>;
+  }
+  return (
+    <>
+      {children}
+      <h2>Usted está logueado </h2>
+    </>
+  );
 };

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
 import styles from "./ItemDetailContainer.module.scss";
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = memo(() => {
   const [item, setItem] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -40,6 +40,6 @@ const ItemDetailContainer = () => {
       )}
     </div>
   );
-};
+});
 
 export default ItemDetailContainer;
