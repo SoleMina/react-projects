@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useCartContext } from "../../contexts/cartContext";
 //Import icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,8 +36,8 @@ const Cart = () => {
                     <h5>Delete</h5>
                     <FontAwesomeIcon
                       icon={faTrash}
-                      className="icon-awesome delete-icon"
-                      onClick={deleteElement}
+                      className="icon-awesome delet(e-icon"
+                      onClick={() => deleteElement(item.id)}
                     />
                   </div>
                 </div>
@@ -57,6 +58,9 @@ const Cart = () => {
             data-count="0"
             className={styles.icon + " text-center"}
           />
+          <Link to="/" className="text-center mt-4">
+            Go back to homepage
+          </Link>
         </>
       )}
     </div>
