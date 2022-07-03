@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { createContext } from "react";
 
@@ -36,6 +36,16 @@ export const CartContextProvider = ({ children }) => {
   const deleteElement = (id) => {
     setCart(cart.filter((item) => item.id !== id));
   };
+
+  const updateItems = () => {
+    let totalProducts = cart.reduce((a, b) => a + b.cantidad, 0);
+    setCount(totalProducts);
+    console.log("COUNT", count);
+  };
+
+  useEffect(() => {
+    updateItems();
+  });
 
   return (
     <CartContext.Provider
