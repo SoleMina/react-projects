@@ -31,7 +31,7 @@ const ItemListContainer = memo(({ greeting }) => {
           <div className={styles.listContainer}>
             {productos.map((item) => {
               return (
-                <div key={item.id}>
+                <div key={item.id} className={styles.item__list}>
                   <ItemList item={item} />
                 </div>
               );

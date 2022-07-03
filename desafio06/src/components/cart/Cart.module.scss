@@ -1,0 +1,20 @@
+.icon {
+  font-size: 30rem;
+}
+.btnGeneral {
+  width: 200px;
+  margin: 0 auto;
+  display: block;
+}
+.cartBox {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.cart {
+  width: 60%;
+  margin: 0 auto;
+}
+.delete-icon {
+  cursor: pointer;
+}
