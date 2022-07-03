@@ -5,10 +5,28 @@ import { useCartContext } from "../../contexts/cartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 import styles from "./Cart.module.scss";
 
 const Cart = () => {
   const { cart, removeCart, deleteElement } = useCartContext();
+
+  const deleteItem = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      //text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "Your product has been deleted.", "success");
+        deleteElement(id);
+      }
+    });
+  };
 
   return (
     <div className="d-flex justify-content-center flex-column">
@@ -37,7 +55,7 @@ const Cart = () => {
                     <FontAwesomeIcon
                       icon={faTrash}
                       className="icon-awesome delet(e-icon"
-                      onClick={() => deleteElement(item.id)}
+                      onClick={() => deleteItem(item.id)}
                     />
                   </div>
                 </div>

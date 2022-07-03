@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import styles from "./ItemCount.module.scss";
 
 const ItemCount = ({ stock, initial, onAdd, item }) => {
@@ -17,6 +18,13 @@ const ItemCount = ({ stock, initial, onAdd, item }) => {
       onAdd(count);
       setShowCount(false);
     }
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Your product has been saved",
+      showConfirmButton: false,
+      timer: 1500
+    });
   };
 
   return (
