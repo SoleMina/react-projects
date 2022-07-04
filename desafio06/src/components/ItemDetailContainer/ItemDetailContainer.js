@@ -14,7 +14,7 @@ const ItemDetailContainer = memo(() => {
   //para traer uno solo document
   useEffect(() => {
     const db = getFirestore(); //db - collection name - id
-    const queryProduct = doc(db, "products", "5HXVtj6ZPLCaBpctsN2p");
+    const queryProduct = doc(db, "products", id);
     getDoc(queryProduct)
       .then((res) => setItem({ id: res.id, ...res.data() }))
       .catch((err) => console.log(err));

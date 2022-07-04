@@ -51,14 +51,14 @@ const NavBar = () => {
                 Laptop
               </NavLink>
               <NavLink
-                to="/categories/mobile"
+                to="/categories/cellphone"
                 className={({ isActive }) =>
                   isActive
                     ? styles.nav_linked + " ligthblue"
                     : styles.nav_linked + " white"
                 }
               >
-                Mobile
+                Cellphone
               </NavLink>
               {/*
                 <NavDropdown title="Categorías" id="collasible-nav-dropdown">

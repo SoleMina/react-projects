@@ -37,7 +37,7 @@ const Cart = () => {
             return (
               <>
                 <div key={item.id} className={styles.cartBox + " mb-4"}>
-                  <img src={item.pictureUrl} width="100" />
+                  <img src={item.imgUrl} width="100" />
                   <div>
                     <h5>Nombre</h5>
                     <p>{item.title}</p>
