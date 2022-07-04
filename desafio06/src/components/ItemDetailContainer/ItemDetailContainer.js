@@ -11,8 +11,7 @@ const ItemDetailContainer = memo(() => {
 
   const { id } = useParams();
 
-  //para traer uno solo
-
+  //para traer uno solo document
   useEffect(() => {
     const db = getFirestore(); //db - collection name - id
     const queryProduct = doc(db, "products", "5HXVtj6ZPLCaBpctsN2p");
@@ -24,30 +23,6 @@ const ItemDetailContainer = memo(() => {
       setLoading(false);
     }, 500);
   }, []);
-
-  /*
-  const getFetch = async () => {
-    try {
-      const queryFetch = await fetch(
-        "https://raw.githubusercontent.com/SoleMina/react-projects/main/desafio06/assets/json/data.json"
-      );
-      const queryFetchParse = await queryFetch.json();
-      let producto = queryFetchParse.productos;
-      producto = producto.find((prod) => parseInt(prod.id) === parseInt(id));
-      setItem(producto);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    getFetch();
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
-  }, []);
-
-    */
 
   return (
     <div className={styles.listContainer}>

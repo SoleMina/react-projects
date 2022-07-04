@@ -9,7 +9,9 @@ import {
   doc,
   getDoc,
   getDocs,
-  collection
+  collection,
+  query,
+  where
 } from "firebase/firestore";
 
 const ItemListContainer = memo(({ greeting }) => {
@@ -18,21 +20,8 @@ const ItemListContainer = memo(({ greeting }) => {
   const { categoriaId } = useParams();
   console.log(categoriaId);
 
-  //para traer uno solo
-  /*
-  useEffect(() => {
-    const db = getFirestore(); //db - collection name - id
-    const queryProduct = doc(db, "products", "5HXVtj6ZPLCaBpctsN2p");
-    getDoc(queryProduct)
-      .then((res) => setProductos({ id: res.id, ...res.data() }))
-      .catch((err) => console.log(err));
-
-    if (productos.length > 0) {
-      setLoading(false);
-    }
-  }, []);
-*/
   //para traer todos
+  /*
   useEffect(() => {
     const db = getFirestore();
     const queryCollection = collection(db, "products");
@@ -41,6 +30,7 @@ const ItemListContainer = memo(({ greeting }) => {
     );
     setLoading(false);
   }, []);
+  */
   /*
   useEffect(() => {
     getFetch().then((res) => {
@@ -54,6 +44,31 @@ const ItemListContainer = memo(({ greeting }) => {
   }, [categoriaId]);
 
   */
+
+  //Para traer todos los filtrados
+  //para traer todos
+  useEffect(() => {
+    const db = getFirestore();
+    const queryCollection = collection(db, "products");
+
+    if (categoriaId) {
+      const queryCollectionFilter = query(
+        queryCollection,
+        where("category", "==", categoriaId)
+      );
+      getDocs(queryCollectionFilter).then((res) =>
+        setProductos(res.docs.map((item) => ({ id: item.id, ...item.data() })))
+      );
+    } else {
+      getDocs(queryCollection).then((res) =>
+        setProductos(res.docs.map((item) => ({ id: item.id, ...item.data() })))
+      );
+    }
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, [categoriaId]);
+
   console.log("AAAA", productos);
   return (
     <div>
