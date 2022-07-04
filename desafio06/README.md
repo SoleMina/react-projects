@@ -6,6 +6,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `Cart View`
+### `Firebase`
 
-Runs the app in the development mode.
+Challenge made in "desafio11" branch
