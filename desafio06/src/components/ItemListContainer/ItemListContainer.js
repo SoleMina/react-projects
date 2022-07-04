@@ -11,7 +11,9 @@ import {
   getDocs,
   collection,
   query,
-  where
+  where,
+  orderBy,
+  limit
 } from "firebase/firestore";
 
 const ItemListContainer = memo(({ greeting }) => {
@@ -21,40 +23,17 @@ const ItemListContainer = memo(({ greeting }) => {
   console.log(categoriaId);
 
   //para traer todos
-  /*
-  useEffect(() => {
-    const db = getFirestore();
-    const queryCollection = collection(db, "products");
-    getDocs(queryCollection).then((res) =>
-      setProductos(res.docs.map((item) => ({ id: item.id, ...item.data() })))
-    );
-    setLoading(false);
-  }, []);
-  */
-  /*
-  useEffect(() => {
-    getFetch().then((res) => {
-      categoriaId
-        ? setProductos(
-            res.filter((producto) => producto.category === categoriaId)
-          )
-        : setProductos(res);
-    });
-    setLoading(false);
-  }, [categoriaId]);
-
-  */
-
-  //Para traer todos los filtrados
-  //para traer todos
   useEffect(() => {
     const db = getFirestore();
     const queryCollection = collection(db, "products");
 
     if (categoriaId) {
+      //You can use 2 where() and limit(1)
       const queryCollectionFilter = query(
         queryCollection,
-        where("category", "==", categoriaId)
+        where("category", "==", categoriaId),
+        limit(10),
+        orderBy("price", "desc")
       );
       getDocs(queryCollectionFilter).then((res) =>
         setProductos(res.docs.map((item) => ({ id: item.id, ...item.data() })))
