@@ -2,6 +2,7 @@ import React, { useEffect, useState, memo } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import SpinnerContainer from "../SpinnerContainer/SpinnerContainer";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import styles from "./ItemDetailContainer.module.scss";
 
 const ItemDetailContainer = memo(() => {
@@ -10,6 +11,21 @@ const ItemDetailContainer = memo(() => {
 
   const { id } = useParams();
 
+  //para traer uno solo
+
+  useEffect(() => {
+    const db = getFirestore(); //db - collection name - id
+    const queryProduct = doc(db, "products", "5HXVtj6ZPLCaBpctsN2p");
+    getDoc(queryProduct)
+      .then((res) => setItem({ id: res.id, ...res.data() }))
+      .catch((err) => console.log(err));
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
+
+  /*
   const getFetch = async () => {
     try {
       const queryFetch = await fetch(
@@ -30,6 +46,8 @@ const ItemDetailContainer = memo(() => {
       setLoading(false);
     }, 500);
   }, []);
+
+    */
 
   return (
     <div className={styles.listContainer}>

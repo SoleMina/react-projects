@@ -6,8 +6,8 @@ import styles from "./Item.module.scss";
 const Item = ({ item }) => {
   return (
     <>
-      <h3>{item.title}</h3>
-      <img src={item.pictureUrl} width="150" height="150" alt="" />
+      <h3>{item.name}</h3>
+      <img src={item.imgUrl} width="150" height="150" alt="" />
       <p>Description: {item.description}</p>
       <p>Stock: {item.stock}</p>
       <div className="item_button">

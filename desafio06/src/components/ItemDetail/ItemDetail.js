@@ -15,10 +15,16 @@ const ItemDetail = ({ item }) => {
 
   return (
     <>
-      <h2 className={showCount ? "" : "text-center"}>Item Detail</h2>
-      <h3>{item.name}</h3>
+      <h2
+        className={
+          styles.item__headliner + (showCount ? "" : "text-center mt-4")
+        }
+      >
+        Item Detail
+      </h2>
+      <h4>{item.name}</h4>
       <img
-        src={item.pictureUrl}
+        src={item.imgUrl}
         width="150"
         height="150"
         alt=""
