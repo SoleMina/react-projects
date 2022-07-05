@@ -40,7 +40,7 @@ const Cart = () => {
                   <img src={item.imgUrl} width="100" />
                   <div>
                     <h5>Nombre</h5>
-                    <p>{item.title}</p>
+                    <p>{item.name}</p>
                   </div>
                   <div>
                     <h5>Precio</h5>
