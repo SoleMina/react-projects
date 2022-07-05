@@ -49,6 +49,7 @@ export const CartContextProvider = ({ children }) => {
   const getPrice = () => {
     const total = cart.reduce((a, item) => a + item.price * item.cantidad, 0);
     setTotalPrice(total);
+    console.log("PRECIOOO", totalPrice);
   };
 
   useEffect(() => {
@@ -58,7 +59,7 @@ export const CartContextProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeCart, count, deleteElement }}
+      value={{ cart, addToCart, removeCart, count, deleteElement, totalPrice }}
     >
       {children}
     </CartContext.Provider>

@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import styles from "./Cart.module.scss";
 
 const Cart = () => {
-  const { cart, removeCart, deleteElement } = useCartContext();
+  const { cart, removeCart, deleteElement, totalPrice } = useCartContext();
 
   const deleteItem = (id) => {
     Swal.fire({
@@ -59,10 +59,21 @@ const Cart = () => {
                     />
                   </div>
                 </div>
+                <div className="cartItem">
+                  <div className="row">
+                    <div className="col-md-12 text-center">
+                      Monto Total:
+                      <p>$/. {totalPrice}</p>
+                      <Link to={`/thankyou`} className="btn btn-primary">
+                        Finalize your purchase
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </>
             );
           })}
-          <button onClick={removeCart} className={styles.btnGeneral}>
+          <button onClick={removeCart} className={styles.btnGeneral + " mt-3"}>
             Vaciar carrito
           </button>
         </div>
