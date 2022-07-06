@@ -5,7 +5,13 @@ import { useCartContext } from "../../contexts/cartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  updateDoc,
+  doc
+} from "firebase/firestore";
 import Swal from "sweetalert2";
 import styles from "./Cart.module.scss";
 
@@ -32,12 +38,17 @@ const Cart = () => {
     });
 
     const db = getFirestore();
-
+    /*
     const orderCollection = collection(db, "orders");
-
     addDoc(orderCollection, order).then((res) => console.log(res));
-
     console.log(order);
+    */
+
+    //update
+    const updateCollection = doc(db, "products", "5HXVtj6ZPLCaBpctsN2p");
+    updateDoc(updateCollection, {
+      stock: 25
+    }).then(() => console.log("actualizado"));
   };
 
   const deleteItem = (id) => {
