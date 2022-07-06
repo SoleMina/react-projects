@@ -11,6 +11,28 @@ import styles from "./Cart.module.scss";
 const Cart = () => {
   const { cart, removeCart, deleteElement, totalPrice } = useCartContext();
 
+  const generateOrder = (e) => {
+    e.preventDefault();
+    let order = {};
+
+    order.buyer = {
+      name: "Karina",
+      email: "karina@gmail.com",
+      phone: "998653452"
+    };
+    order.total = totalPrice;
+
+    order.items = cart.map((cartItem) => {
+      const id = cartItem.id;
+      const name = cartItem.name;
+      const price = cartItem.price * cartItem.cantidad;
+      //
+      return { id, name, price };
+    });
+
+    console.log(order);
+  };
+
   const deleteItem = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -64,7 +86,11 @@ const Cart = () => {
                     <div className="col-md-12 text-center">
                       Monto Total:
                       <p>$/. {totalPrice}</p>
-                      <Link to={`/thankyou`} className="btn btn-primary">
+                      <Link
+                        to={`/thankyou`}
+                        onClick={generateOrder}
+                        className="btn btn-primary"
+                      >
                         Finalize your purchase
                       </Link>
                     </div>
