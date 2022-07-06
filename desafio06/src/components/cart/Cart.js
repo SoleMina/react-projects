@@ -10,7 +10,9 @@ import {
   collection,
   addDoc,
   updateDoc,
-  doc
+  doc,
+  query,
+  where
 } from "firebase/firestore";
 import Swal from "sweetalert2";
 import styles from "./Cart.module.scss";
@@ -37,6 +39,7 @@ const Cart = () => {
       return { id, name, price };
     });
 
+    //Insertar order to firestore
     const db = getFirestore();
     /*
     const orderCollection = collection(db, "orders");
@@ -45,10 +48,20 @@ const Cart = () => {
     */
 
     //update
+    /*
     const updateCollection = doc(db, "products", "5HXVtj6ZPLCaBpctsN2p");
     updateDoc(updateCollection, {
       stock: 25
     }).then(() => console.log("actualizado"));
+    */
+
+    //Actualizar stock
+    const queryCollectionStock = collection(db, "products");
+    /*
+    const queryUpdateStock = await 
+    query(queryCollectionStock, 
+    where) documentId(), "in", cart.map((item) => item.id))
+    */
   };
 
   const deleteItem = (id) => {
