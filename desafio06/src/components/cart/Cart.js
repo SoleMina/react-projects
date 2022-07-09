@@ -48,19 +48,11 @@ const Cart = () => {
     addDoc(orderCollection, order).then((res) => console.log(res));
     console.log(order);
 
-    //update
-    /*
-    const updateCollection = doc(db, "products", "5HXVtj6ZPLCaBpctsN2p");
-    updateDoc(updateCollection, {
-      stock: 25
-    }).then(() => console.log("actualizado"));
-    */
-
-    //Actualizar stock
+    //Update stock
     const queryCollectionStock = collection(db, "products");
 
     const queryActulizarStock = await query(
-      queryCollectionStock, //get products array
+      queryCollectionStock,
       where(
         documentId(),
         "in",
@@ -83,11 +75,6 @@ const Cart = () => {
       .finally(() => removeCart());
 
     batch.commit();
-    /*
-    const queryUpdateStock = await 
-    query(queryCollectionStock, 
-    where) documentId(), "in", cart.map((item) => item.id))
-    */
   };
 
   const deleteItem = (id) => {
