@@ -25,11 +25,6 @@ const NavBar = () => {
             </Nav>
 
             <Nav>
-              <Nav.Link>
-                <Link to="/cart">
-                  <CartWidget icon={faShoppingCart} />
-                </Link>
-              </Nav.Link>
               <NavLink
                 to="/categories/electro"
                 className={({ isActive }) =>
@@ -60,6 +55,21 @@ const NavBar = () => {
               >
                 Cellphone
               </NavLink>
+              <NavLink
+                to="/categories/games"
+                className={({ isActive }) =>
+                  isActive
+                    ? styles.nav_linked + " ligthblue"
+                    : styles.nav_linked + " white"
+                }
+              >
+                Games
+              </NavLink>
+              <Nav.Link>
+                <Link to="/cart">
+                  <CartWidget icon={faShoppingCart} />
+                </Link>
+              </Nav.Link>
               {/*
                 <NavDropdown title="Categorías" id="collasible-nav-dropdown">
                 <NavDropdown.Item

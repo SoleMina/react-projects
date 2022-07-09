@@ -60,12 +60,12 @@ const Cart = () => {
     const queryCollectionStock = collection(db, "products");
 
     const queryActulizarStock = await query(
-      queryCollectionStock, //                   ['jlksjfdgl','asljdfks'] -> ejemplo del map ,
+      queryCollectionStock, //get products array
       where(
         documentId(),
         "in",
         cart.map((it) => it.id)
-      ) // in es que estén en ..
+      )
     );
 
     const batch = writeBatch(db);
@@ -93,7 +93,6 @@ const Cart = () => {
   const deleteItem = (id) => {
     Swal.fire({
       title: "Are you sure?",
-      //text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
