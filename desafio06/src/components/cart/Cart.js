@@ -10,9 +10,12 @@ import {
   collection,
   addDoc,
   updateDoc,
+  getDocs,
   doc,
+  documentId,
   query,
-  where
+  where,
+  writeBatch
 } from "firebase/firestore";
 import Swal from "sweetalert2";
 import styles from "./Cart.module.scss";
@@ -20,7 +23,7 @@ import styles from "./Cart.module.scss";
 const Cart = () => {
   const { cart, removeCart, deleteElement, totalPrice } = useCartContext();
 
-  const generateOrder = (e) => {
+  const generateOrder = async (e) => {
     e.preventDefault();
     let order = {};
 
@@ -35,17 +38,15 @@ const Cart = () => {
       const id = cartItem.id;
       const name = cartItem.name;
       const price = cartItem.price * cartItem.cantidad;
-      //
+      const total = totalPrice;
       return { id, name, price };
     });
 
     //Insertar order to firestore
     const db = getFirestore();
-    /*
     const orderCollection = collection(db, "orders");
     addDoc(orderCollection, order).then((res) => console.log(res));
     console.log(order);
-    */
 
     //update
     /*
@@ -57,6 +58,31 @@ const Cart = () => {
 
     //Actualizar stock
     const queryCollectionStock = collection(db, "products");
+
+    const queryActulizarStock = await query(
+      queryCollectionStock, //                   ['jlksjfdgl','asljdfks'] -> ejemplo del map ,
+      where(
+        documentId(),
+        "in",
+        cart.map((it) => it.id)
+      ) // in es que estén en ..
+    );
+
+    const batch = writeBatch(db);
+
+    await getDocs(queryActulizarStock)
+      .then((resp) =>
+        resp.docs.forEach((res) =>
+          batch.update(res.ref, {
+            stock:
+              res.data().stock -
+              cart.find((item) => item.id === res.id).cantidad
+          })
+        )
+      )
+      .finally(() => removeCart());
+
+    batch.commit();
     /*
     const queryUpdateStock = await 
     query(queryCollectionStock, 
@@ -112,24 +138,24 @@ const Cart = () => {
                     />
                   </div>
                 </div>
-                <div className="cartItem">
-                  <div className="row">
-                    <div className="col-md-12 text-center">
-                      Monto Total:
-                      <p>$/. {totalPrice}</p>
-                      <Link
-                        to={`/thankyou`}
-                        onClick={generateOrder}
-                        className="btn btn-primary"
-                      >
-                        Finalize your purchase
-                      </Link>
-                    </div>
-                  </div>
-                </div>
               </>
             );
           })}
+          <div className="cartItem">
+            <div className="row">
+              <div className="col-md-12 text-center">
+                Monto Total:
+                <p>$/. {totalPrice}</p>
+                <Link
+                  to={`/thankyou`}
+                  onClick={generateOrder}
+                  className="btn btn-primary"
+                >
+                  Finalize your purchase
+                </Link>
+              </div>
+            </div>
+          </div>
           <button onClick={removeCart} className={styles.btnGeneral + " mt-3"}>
             Vaciar carrito
           </button>

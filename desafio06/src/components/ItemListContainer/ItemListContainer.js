@@ -31,9 +31,9 @@ const ItemListContainer = memo(({ greeting }) => {
       //You can use 2 where() and limit(1)
       const queryCollectionFilter = query(
         queryCollection,
-        where("category", "==", categoriaId),
-        limit(10),
-        orderBy("price", "desc")
+        where("category", "==", categoriaId)
+        //limit(10),
+        //orderBy("price", "desc")
       );
       getDocs(queryCollectionFilter).then((res) =>
         setProductos(res.docs.map((item) => ({ id: item.id, ...item.data() })))
