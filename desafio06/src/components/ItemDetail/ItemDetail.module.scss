@@ -3,8 +3,14 @@
   justify-content: space-between;
   gap: 10px;
 }
-.item__headliner {
-  margin: 10px;
+.item__count {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.item__detail {
+  display: flex;
 }
 .img__responsive {
   margin: 0 auto;

@@ -29,25 +29,25 @@ const ItemCount = ({ stock, initial, onAdd, item }) => {
 
   return (
     <div>
-      <div className={styles.count + " w-50 mb-2"}>
+      <div className={styles.count + " mb-2"}>
         <button onClick={() => handleDecrement()}>-</button>
         <p>{count}</p>
         <button onClick={() => onAddition()}>+</button>
       </div>
       {showCount ? (
         <>
-          <button className="w-50" onClick={() => agregar(count)}>
+          <button className="" onClick={() => agregar(count)}>
             Agregar al carrito
           </button>
         </>
       ) : (
         <div className={styles.btn__container}>
           <Link to="/cart">
-            <button className="w-50 mb-2">Terminar compra</button>
+            <button className="mb-2">Terminar compra</button>
           </Link>
           <br />
           <Link to="/">
-            <button className="w-50">Seguir comprando</button>
+            <button className="">Seguir comprando</button>
           </Link>
         </div>
       )}
